@@ -4,33 +4,41 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        ChangeColor();
         Console.WriteLine("ΠΑΙΧΝΙΔΙ ΜΑΝΤΕΨΕ ΤΟΝ ΑΡΙΘΜΟ");
-        Console.WriteLine("Ο υπολογιστης επιλέγει τυχαία έναν Αριθμό απο το 1 ερως το 100 και ο χρήστης πρέπει να τον μαντέψει");
+        Console.WriteLine("Ο υπολογιστης επιλέγει τυχαία έναν Αριθμό απο το 1 εως το 100 και ο χρήστης πρέπει να τον μαντέψει");
         PlayGame();
+    }
+
+    public static void ChangeColor()
+    {
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Clear();
     }
 
     public static void PlayGame()
     {
-        bool Win = false;
-        int ComputerNumber = 0;
+        int ComputerNumber = RandomNumber();
         int Counter = 1;
-        ComputerNumber = RandomNumber();
         do
         {
             int PlayerNumber = CheckInput();
-            Win = CheckIfWin(ComputerNumber, PlayerNumber);
-            if (!Win)
+            bool results = CheckIfWin(ComputerNumber, PlayerNumber);
+            if (!results)
             {
                 Counter++;
+                continue;
             }
             else
             {
-                Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Πεοσπάθειες");
+                Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Προσπάθειες");
                 break;
             }
-        } while (!Win);
+        } while (true);
         Console.WriteLine("Τέλος Παιχνιδιου!!");
-        Console.ReadKey();
+        GameInfo();
+        Console.Read();
     }
 
     public static int RandomNumber()
@@ -62,11 +70,18 @@ internal class Program
         Console.WriteLine("Δεν τον Βρήκεες Ξαναδοκιμασε");
         if (ComputerNumber < PlayerNumber)
         {
-            Console.WriteLine("Ο Αριθμπος του Υπολογιστή είναι μικρότερος απο αυτός που έδωσες");
+            Console.WriteLine("Ο Αριθμός του Υπολογιστή είναι μικρότερος απο αυτόν που έδωσες");
         }else
         {
-            Console.WriteLine("Ο Αριθμπος του Υπολογιστή είναι μεγαλύτερος απο αυτός που έδωσες");
+            Console.WriteLine("Ο Αριθμός του Υπολογιστή είναι μεγαλύτερος απο αυτόν που έδωσες");
         }
         return false;
+    }
+
+    public static void GameInfo()
+    {
+        Console.WriteLine("Το παίχνιδι αυτό φιάχτηκε για εκπαιδευτικούς σκοπούς");
+        Console.WriteLine("Όνομα Προγραμματιστή : ΨΑλτάκης Νικόλαος");
+        Console.WriteLine("(C) 06/2023 using .NET");
     }
 }
