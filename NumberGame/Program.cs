@@ -43,14 +43,14 @@ internal class Program
 
     public static int RandomNumber()
     {
-        Random random = new Random();
+        Random random = new();
         return random.Next(1,100);
     }
 
     public static int CheckInput()
     {
         bool isNumber = false;
-        int PlayerNumber = 0;
+        int PlayerNumber;
         do
         {
             Console.WriteLine("Διάλεξε έναν Αριθμό απο το 1 εως το 100");
