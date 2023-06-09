@@ -80,7 +80,7 @@ internal class Program
 
     public static void GameInfo()
     {
-        Console.WriteLine("Το παίχνιδι αυτό φιάχτηκε για εκπαιδευτικούς σκοπούς");
+        Console.WriteLine("Το παίχνιδι αυτό φτιάχτηκε για εκπαιδευτικούς σκοπούς");
         Console.WriteLine("Όνομα Προγραμματιστή : ΨΑλτάκης Νικόλαος");
         Console.WriteLine("(C) 06/2023 using .NET");
     }
