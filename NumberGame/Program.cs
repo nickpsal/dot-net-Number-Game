@@ -22,7 +22,7 @@ internal class Program
         List<int> Numbers = new() { };
         int ComputerNumber = RandomNumber();
         int Counter = 1;
-        do
+        while (true)
         {
             int PlayerNumber = CheckInput();
             bool results = CheckIfWin(ComputerNumber, PlayerNumber, Numbers);
@@ -36,7 +36,7 @@ internal class Program
                 Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Προσπάθειες");
                 break;
             }
-        } while (true);
+        }
         Console.WriteLine("Τέλος Παιχνιδιου!!");
         GameInfo();
         Console.Read();
