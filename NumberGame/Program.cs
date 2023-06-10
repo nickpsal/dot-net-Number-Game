@@ -62,12 +62,21 @@ internal class Program
 
     public static bool CheckIfWin(int ComputerNumber, int  PlayerNumber)
     {
+        List<int> Numbers = new() { };
         if (ComputerNumber == PlayerNumber)
         {
             return true;
             
         }
-        Console.WriteLine("Δεν τον Βρήκεες Ξαναδοκιμασε");
+        if (Numbers.Contains(PlayerNumber))
+        {
+            Console.WriteLine("Τον είχες ξανα δώσει τον ίδιο Αριθμό.");
+            Console.WriteLine("Ξαναδοκιμασε");
+        }
+        else
+        {
+            Numbers.Add(PlayerNumber);
+        }
         if (ComputerNumber < PlayerNumber)
         {
             Console.WriteLine("Ο Αριθμός του Υπολογιστή είναι μικρότερος απο αυτόν που έδωσες");
