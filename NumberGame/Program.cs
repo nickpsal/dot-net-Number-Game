@@ -63,14 +63,12 @@ internal class Program
 
     public static bool CheckIfWin(int ComputerNumber, int  PlayerNumber, List<int> Numbers)
     {
-        bool ExistsInList = false;
         if (ComputerNumber == PlayerNumber)
         {
             return true;
             
         }
-        ExistsInList = Numbers.Contains(PlayerNumber);
-        if (ExistsInList)
+        if (Numbers.Contains(PlayerNumber))
         {
             Console.WriteLine("Τον είχες ξανα δώσει τον ίδιο Αριθμό.");
             Console.WriteLine("Ξαναδοκιμασε");
