@@ -19,12 +19,13 @@ internal class Program
 
     public static void PlayGame()
     {
+        List<int> Numbers = new() { };
         int ComputerNumber = RandomNumber();
         int Counter = 1;
         do
         {
             int PlayerNumber = CheckInput();
-            bool results = CheckIfWin(ComputerNumber, PlayerNumber);
+            bool results = CheckIfWin(ComputerNumber, PlayerNumber, Numbers);
             if (!results)
             {
                 Counter++;
@@ -60,15 +61,16 @@ internal class Program
         return PlayerNumber;
     }
 
-    public static bool CheckIfWin(int ComputerNumber, int  PlayerNumber)
+    public static bool CheckIfWin(int ComputerNumber, int  PlayerNumber, List<int> Numbers)
     {
-        List<int> Numbers = new() { };
+        bool ExistsInList = false;
         if (ComputerNumber == PlayerNumber)
         {
             return true;
             
         }
-        if (Numbers.Contains(PlayerNumber))
+        ExistsInList = Numbers.Contains(PlayerNumber);
+        if (ExistsInList)
         {
             Console.WriteLine("Τον είχες ξανα δώσει τον ίδιο Αριθμό.");
             Console.WriteLine("Ξαναδοκιμασε");
@@ -80,7 +82,8 @@ internal class Program
         if (ComputerNumber < PlayerNumber)
         {
             Console.WriteLine("Ο Αριθμός του Υπολογιστή είναι μικρότερος απο αυτόν που έδωσες");
-        }else
+        }
+        else
         {
             Console.WriteLine("Ο Αριθμός του Υπολογιστή είναι μεγαλύτερος απο αυτόν που έδωσες");
         }
