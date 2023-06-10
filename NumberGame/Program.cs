@@ -2,6 +2,7 @@
 
 internal class Program
 {
+    static List<int> Numbers = new() { };
     private static void Main(string[] args)
     {
         ChangeColor();
@@ -19,13 +20,12 @@ internal class Program
 
     public static void PlayGame()
     {
-        List<int> Numbers = new() { };
         int ComputerNumber = RandomNumber();
         int Counter = 1;
         while (true)
         {
             int PlayerNumber = CheckInput();
-            bool results = CheckIfWin(ComputerNumber, PlayerNumber, Numbers);
+            bool results = CheckIfWin(ComputerNumber, PlayerNumber);
             if (!results)
             {
                 Counter++;
@@ -61,7 +61,7 @@ internal class Program
         return PlayerNumber;
     }
 
-    public static bool CheckIfWin(int ComputerNumber, int  PlayerNumber, List<int> Numbers)
+    public static bool CheckIfWin(int ComputerNumber, int  PlayerNumber)
     {
         if (ComputerNumber == PlayerNumber)
         {
