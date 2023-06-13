@@ -8,7 +8,10 @@ internal class Program
         ChangeColor();
         Console.WriteLine("ΠΑΙΧΝΙΔΙ ΜΑΝΤΕΨΕ ΤΟΝ ΑΡΙΘΜΟ");
         Console.WriteLine("Ο υπολογιστης επιλέγει τυχαία έναν Αριθμό απο το 1 εως το 100 και ο χρήστης πρέπει να τον μαντέψει");
-        PlayGame();
+        while (true)
+        {
+            PlayGame();
+        }
     }
 
     public static void ChangeColor()
@@ -25,21 +28,27 @@ internal class Program
         while (true)
         {
             int PlayerNumber = CheckInput();
-            bool results = CheckIfWin(ComputerNumber, PlayerNumber);
-            if (!results)
+            if (PlayerNumber == 0)
             {
-                Counter++;
-                continue;
-            }
-            else
+                GameInfo();
+                Console.Read();
+                Environment.Exit(0);
+            }else
             {
-                Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Προσπάθειες");
-                break;
+                bool results = CheckIfWin(ComputerNumber, PlayerNumber);
+                if (!results)
+                {
+                    Counter++;
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Προσπάθειες");
+                    break;
+                }
             }
         }
-        Console.WriteLine("Τέλος Παιχνιδιου!!");
-        GameInfo();
-        Console.Read();
+        Console.WriteLine("Τέλος Παιχνιδιου!!. Ξαναπαίζουμε");
     }
 
     public static int RandomNumber()
@@ -54,10 +63,10 @@ internal class Program
         int PlayerNumber;
         do
         {
-            Console.WriteLine("Διάλεξε έναν Αριθμό απο το 1 εως το 100");
+            Console.WriteLine("Διάλεξε έναν Αριθμό απο το 1 εως το 100, 0 για έξοδο");
             string? PlayerN = Console.ReadLine();
             isNumber = int.TryParse(PlayerN, out PlayerNumber);
-        } while (!isNumber  || PlayerNumber<=0 || PlayerNumber>100);
+        } while (!isNumber  || PlayerNumber<0 || PlayerNumber>100);
         return PlayerNumber;
     }
 
