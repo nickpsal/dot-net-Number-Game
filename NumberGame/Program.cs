@@ -2,7 +2,6 @@
 
 internal class Program
 {
-    static List<int> Numbers = new() { };
     private static void Main(string[] args)
     {
         ChangeColor();
@@ -23,11 +22,20 @@ internal class Program
 
     public static void PlayGame()
     {
+        List<int> Numbers = new() { };
         int ComputerNumber = RandomNumber();
         int Counter = 1;
         while (true)
         {
             int PlayerNumber = CheckInput();
+            if (Numbers.Contains(PlayerNumber))
+            {
+                Console.WriteLine("Έδωσες ξανα τον ίδιο Αριθμό. Ξαναπροσπάθησε");
+                continue;
+            }else
+            {
+                Numbers.Add(PlayerNumber);
+            }
             if (PlayerNumber == 0)
             {
                 GameInfo();
@@ -76,15 +84,6 @@ internal class Program
         {
             return true;
             
-        }
-        if (Numbers.Contains(PlayerNumber))
-        {
-            Console.WriteLine("Τον είχες ξανα δώσει τον ίδιο Αριθμό.");
-            Console.WriteLine("Ξαναδοκιμασε");
-        }
-        else
-        {
-            Numbers.Add(PlayerNumber);
         }
         if (ComputerNumber < PlayerNumber)
         {
