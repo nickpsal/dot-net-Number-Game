@@ -36,24 +36,16 @@ internal class Program
             {
                 Numbers.Add(PlayerNumber);
             }
-            if (PlayerNumber == 0)
+            bool results = CheckIfWin(ComputerNumber, PlayerNumber);
+            if (!results)
             {
-                GameInfo();
-                Console.Read();
-                Environment.Exit(0);
-            }else
+                Counter++;
+                continue;
+            }
+            else
             {
-                bool results = CheckIfWin(ComputerNumber, PlayerNumber);
-                if (!results)
-                {
-                    Counter++;
-                    continue;
-                }
-                else
-                {
-                    Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Προσπάθειες");
-                    break;
-                }
+                Console.WriteLine("Συγχαρητήρια!!! Τον βρήκες με " + Counter + " Προσπάθειες");
+                break;
             }
         }
         Console.WriteLine("Τέλος Παιχνιδιου!!. Ξαναπαίζουμε");
@@ -75,6 +67,12 @@ internal class Program
             string? PlayerN = Console.ReadLine();
             isNumber = int.TryParse(PlayerN, out PlayerNumber);
         } while (!isNumber  || PlayerNumber<0 || PlayerNumber>100);
+        if (PlayerNumber == 0)
+        {
+            GameInfo();
+            Console.Read();
+            Environment.Exit(0);
+        }
         return PlayerNumber;
     }
 
